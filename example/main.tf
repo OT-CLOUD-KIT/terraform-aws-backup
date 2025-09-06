@@ -1,35 +1,12 @@
 
-module "standard_tags" {
-  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-standard-tagging.git?ref=dev"
-
-  bu      = var.bu
-  program = var.program
-  app     = var.app
-  team    = var.team
-  region  = var.region
-  env     = var.env
-}
-
-module "naming" {
-  source   = "git@github.com:OT-CLOUD-KIT/terraform-aws-naming.git?ref=dev"
-  bu       = var.bu
-  env      = var.env
-  app      = var.app
-  resource = var.resource
-}
-
-
 module "aws_backup" {
-  source = "../"
+  source = "git@github.com:OT-CLOUD-KIT/terraform-aws-backup.git?ref=Feature"
 
   source_aws_region              = var.source_aws_region
   aws_profile                   = var.aws_profile
- bu      = var.bu
-  program = var.program
-  app     = var.app
-  env     = var.env
-  team    = var.team
-  region  = var.region
+ env = var.env
+ owner = var.owner
+ app = var.app
   backup_vault_name             = var.backup_vault_name
   intermediate_backup_vault_name = var.intermediate_backup_vault_name
   another_account_account_id    = var.another_account_account_id

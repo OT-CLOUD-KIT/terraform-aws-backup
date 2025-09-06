@@ -178,105 +178,17 @@ variable "key_admin_identity" {
   default     = "root"
 }
 
-##########################
-# Naming & Tags
-###########################
-variable "env" {
-  description = "Environment short name."
-  type        = string
-  default     = "d"
-  validation {
-    condition     = contains(["d", "p", "q", "s", "g"], var.env)
-    error_message = "env must be one of 'd', 'p', 'q', 's', 'g'."
-  }
+variable "owner" {
+ type = string
+ default = "opstree"
 }
 
-variable "bu" {
-  description = "Business unit name."
-  type        = string
-  default     = "ot"
-  validation {
-    condition     = length(var.bu) <= 5
-    error_message = "The business unit name must be less than or equal to 5 characters."
-  }
+variable "env" {
+  type = string
+  default = "dev"
 }
 
 variable "app" {
-  description = "Application name."
-  type        = string
-  default     = "bp"
-  validation {
-    condition     = length(var.app) <= 6
-    error_message = "The app name must be less than or equal to 6 characters."
-  }
-}
-
-variable "resource" {
-  description = "Resource name."
-  type        = string
-  default     = "KMS"
-  validation {
-    condition     = length(var.resource) <= 15
-    error_message = "The resource name must be less than or equal to 15 characters."
-  }
-}
-
-variable "tenant" {
-  description = "Tenant name."
-  type        = string
-  default     = ""
-  validation {
-    condition     = length(var.tenant) <= 6
-    error_message = "The tenant name must be less than or equal to 6 characters."
-  }
-}
-
-variable "random_alphanumeric_len" {
-  description = "Length of random alphanumeric string."
-  type        = number
-  default     = 4
-  validation {
-    condition     = var.random_alphanumeric_len >= 1 && var.random_alphanumeric_len <= 4
-    error_message = "The length must be between 1 and 4."
-  }
-}
-
-variable "special" {
-  type    = bool
-  default = false
-}
-
-variable "upper" {
-  type    = bool
-  default = false
-}
-
-variable "number" {
-  type    = bool
-  default = true
-}
-
-variable "gen_no_of_names" {
-  type    = number
-  default = 1
-}
-
-variable "team" {
-  type    = string
-  default = "infra"
-}
-
-variable "program" {
-  type    = string
-  default = "ot"
-}
-
-variable "region" {
-  type    = string
-  default = "us-east-1"
-}
-
-variable "enabled_features" {
-  type    = list(string)
-  default = []
+  type = string
+  default = "otcloud-kit"
 }
